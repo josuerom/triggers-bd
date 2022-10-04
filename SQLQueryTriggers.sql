@@ -1,8 +1,20 @@
 USE tempdb;
 
 ------Creación de las Tablas------
-CREATE TABLE Facturas (Factura INT, Cliente INT, Fecha DATETIME, Total Money DEFAULT (0));
-CREATE TABLE Facturas_Detalles (Factura INT, Detalle INT, Producto VARCHAR(10), Total Money);
+ALTER TABLE Facturas (
+	Factura INT PRIMARY KEY IDENTITY(1,1),
+	Cliente INT,
+	Fecha DATETIME,
+	Total Money DEFAULT (0)
+);
+
+ALTER TABLE Facturas_Detalles (
+	Factura INT PRIMARY KEY IDENTITY(1,1),
+	Detalle INT,
+	Producto VARCHAR(10),
+	Total Money,
+	CONSTRAINT fk_facutura FOREIGN KEY (Factura) REFERENCES Facturas(Factura)
+);
 
 ------Creación del Trigger------
 CREATE TRIGGER Detalles_Modificados
