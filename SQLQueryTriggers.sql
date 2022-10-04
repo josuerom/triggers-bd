@@ -1,14 +1,14 @@
 USE tempdb;
 
 ------Creación de las Tablas------
-ALTER TABLE Facturas (
+CREATE TABLE Facturas (
 	Factura INT PRIMARY KEY IDENTITY(1,1),
 	Cliente INT,
 	Fecha DATETIME,
 	Total Money DEFAULT (0)
 );
 
-ALTER TABLE Facturas_Detalles (
+CREATE TABLE Facturas_Detalles (
 	Factura INT PRIMARY KEY IDENTITY(1,1),
 	Detalle INT,
 	Producto VARCHAR(10),
